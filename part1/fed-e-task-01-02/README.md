@@ -92,18 +92,47 @@ obj.fn()
 　
 
 ### 7. 说说什么是浅拷贝，什么是深拷贝？
-
+浅拷贝深拷贝只是针对Array，Object复制对象的。
+浅拷贝只是拷贝了一层对象的属性，拷贝的是对象的属性的引用，而不是对象本身，修改对象
+例如Object.assign({},obj)
+深拷贝是递归拷贝的对象的所有层级属性。
+例如
+// 判断arr是否为一个数组，返回一个bool值
+function isArray (arr) {
+    return Object.prototype.toString.call(arr) === '[object Array]';
+}
+// 深度克隆
+function deepClone (obj) {
+	// 对常见的“非”值，直接返回原来值
+	if([null, undefined, NaN, false].includes(obj)) return obj;
+    if(typeof obj !== "object" && typeof obj !== 'function') {
+		//原始类型直接返回
+        return obj;
+    }
+    var o = isArray(obj) ? [] : {};
+    for(let i in obj) {
+        if(obj.hasOwnProperty(i)){
+            o[i] = typeof obj[i] === "object" ? deepClone(obj[i]) : obj[i];
+        }
+    }
+    return o;
+}
 　 
 
 　
 
 ### 8. 请简述TypeScript与JavaScript之间的关系？
-
-　
+TypeScript是 JavaScript 的超集，包含了 JavaScript 的所有元素，在TypeScript中可以运行JavaScript代码，并扩展了 JavaScript的语法，如类、接口、继承、泛型等。
 
 　
 
 ### 9. 请谈谈你所认为的typescript优缺点
+优点：
+1. TypeScript在编译时提供类型检查。在代码运行前就进行错误提示。有助于快速查找错误。
+2. 增强了编译器和IDE的功能，包括代码补全、接口提示、跳转到定义、重构等。
+缺点：
+1. 短期项目增加了开发成本，如一些类型的定义。但对于长期维护的项目能减少一些维护成本。
+2. 使用第三方库时，需要有第三方库的定义文件。否则编译器会报错。
 
 　
 
