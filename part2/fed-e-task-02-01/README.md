@@ -33,7 +33,7 @@
 **1、概述脚手架实现的过程，并使用 NodeJS 完成一个自定义的小型脚手架工具**
 答：
 - 询问设置的配置问题。根据结果结合模板文件生成一些相应的结构。
-- NodeJS脚手架工具为code下的nodecli
+- NodeJS脚手架工具为code下的nodecli，通过yarn link的方式使用
 　
 
 　
