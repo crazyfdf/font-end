@@ -1,11 +1,13 @@
-const path = require("path");
+const path = require("path"); //添加依赖
 
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin"); //打包vue
+const HtmlWebpackPlugin = require("html-webpack-plugin"); //打包html
 const { webpack, HotModuleReplacementPlugin, DefinePlugin } = require("webpack");
 
 module.exports = {
+  //入口文件
   entry: "./src/main.js",
+  //打包出口文件 这个里面我们需要用到__dirname来生成一个绝对路径
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -14,8 +16,10 @@ module.exports = {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        //不包括node_modules中的js代码
+        exclude: /node_modules/,
         use: {
+          // 用babel-loader进行代码的转换编译
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
@@ -24,11 +28,16 @@ module.exports = {
       },
       {
         test: /\.vue$/,
+        //不包括node_modules中的vue代码
         exclude: /node_modules/,
+        //用于解析vue文件
         loader: "vue-loader",
       },
       {
         test: /\.css$/,
+        //css-loader只负责加载将css文件进行加载
+        //style-loader负责将样式添加到DOM中
+        //使用多个loader是，是从右向左
         use: ["style-loader", "css-loader"],
       },
       {
@@ -74,6 +83,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
+      //创建一个在内存中生成的html页面的插件
       title: "vue",
       filename: "index.html",
       template: path.join(__dirname, "./public/index.html"),

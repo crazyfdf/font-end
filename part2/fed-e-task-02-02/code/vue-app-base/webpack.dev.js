@@ -9,7 +9,8 @@ module.exports = merge(commonConfig, {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        // eslint-loader预处理
+        test: /\.(vue|js)$/,
         exclude: /node_modules/,
         use: "eslint-loader",
         enforce: "pre",
