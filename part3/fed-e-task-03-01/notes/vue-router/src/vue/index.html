@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>差值表达式</h1>
+      <h1>{{msg}}</h1>
+      <h1>{{count}}</h1>
+      <h1>v-text</h1>
+      <div v-text="msg">v-text</div>
+      <h1>v-html</h1>
+      <div v-html="html"></div>
+      <h1>v-model</h1>
+      <input type="text" v-model="msg" />
+      <h1>v-on</h1>
+      <div v-on:click="handler">点击事件</div>
+    </div>
+    <script src="./js/dep.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compiler.js"></script>
+    <script src="./js/observer.js"></script>
+    <script src="./js/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "Hello Vue",
+          count: 100,
+          html: "<div>{{msg}}</div>",
+          person: { name: "ze" },
+        },
+        methods: {
+          handler(e) {
+            console.log(e);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
