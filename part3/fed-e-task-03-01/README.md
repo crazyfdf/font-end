@@ -39,9 +39,12 @@ let vm = new Vue({
 ### 2、请简述 Diff 算法的执行过程
 
 　
-- patch(container, vnode) ，首次渲染，将 container 转为 vnode，并对比新旧 VNode 是否相同节点然后更新DOM
-- patch(vnode, newVnode) ，数据改变二次渲染，对比新旧 VNode 是否相同节点然后更新DOM
-- createElm(vnode, insertedVnodeQueue)，先执行用户的 init 钩子函数，然后把 vnode 转换成真实 DOM（此时没有渲染到页面），最后返回新创建的 DOM
+- diff算法执行过程在于调用patch函数，
+- patch(oldVnode, vnode) ，对比oldVnode和vnode，把两个vnode的差异更新到真实DOM，并返回vnode作为下一次的oldVnode。
+  1. 通过isVnode判断oldVnode是否是vnode对象，如果不是则通过emptyNodeAt将oldVnode转换为vnode对象
+  2. 通过smeVnode判断oldVnode和vnode是否是相同节点。
+    - true，调用patchVnode(oldVnode,vnode,insertedVnodeQueue),找两个节点的差异，将差异更新到DOM。
+    - false，createElm(vnode, insertedVnodeQueue)创建新vnode对应的DOM元素，并把新DOM元素插入DOM树上，并把老节点的DOM元素移除
 - updateChildren(elm, oldCh, ch, insertedVnodeQueue), 如果 VNode 有子节点，并且与旧VNode子节点不相同则执行 updateChildren()，比较子节点的差异并更新到DOM
 　
 
@@ -54,6 +57,7 @@ let vm = new Vue({
 ## 二、编程题
 
 ### 1、模拟 VueRouter 的 hash 模式的实现，实现思路和 History 模式类似，把 URL 中的 # 后面的内容作为路由的地址，可以通过 hashchange 事件监听路由地址的变化。
+源码地址：https://gitee.com/huolingmengling/font-end/tree/master/part3/fed-e-task-03-01/notes/vue-router/src/vuerouterhash/index.js
 
 ```
 let _Vue = null;
@@ -137,6 +141,7 @@ export default class VueRouter {
 　
 
 ### 2、在模拟 Vue.js 响应式源码的基础上实现 v-html 指令，以及 v-on 指令。
+源码地址：hhttps://gitee.com/huolingmengling/font-end/blob/master/part3/fed-e-task-03-01/notes/vue-router/src/vue/js/compiler.js
 ```
  // 处理v-html指令
   htmlUpdater(node, key, value) {
@@ -162,4 +167,4 @@ export default class VueRouter {
 ### 3、参考 Snabbdom 提供的电影列表的示例，利用Snabbdom 实现类似的效果，如图：
 
 <img src="images/Ciqc1F7zUZ-AWP5NAAN0Z_t_hDY449.png" alt="Ciqc1F7zUZ-AWP5NAAN0Z_t_hDY449" style="zoom:50%;" />
-
+项目地址：https://gitee.com/huolingmengling/font-end/tree/master/part3/fed-e-task-03-01/notes/snabbdom-demo
