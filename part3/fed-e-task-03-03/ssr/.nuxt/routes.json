@@ -1,0 +1,14 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\ssr\\\\pages\\\\about.vue",
+    "chunkName": "pages/about"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\ssr\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
+  }
+]
