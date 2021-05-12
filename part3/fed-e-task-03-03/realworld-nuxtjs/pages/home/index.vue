@@ -112,7 +112,7 @@ export default {
     redirect,
     error,
   }) {},
-  async asyncData(context) {
+  async asyncData({ store, query }) {
     const page = Number.parseInt(query.page) || 1;
     const limit = 20;
     const tag = query.tag;
