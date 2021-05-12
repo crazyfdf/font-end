@@ -100,7 +100,19 @@ import { api } from "/plugins/request.js";
 import { addFavorite, deleteFavorite } from "/request/api.js";
 export default {
   name: "home",
-  async asyncData({ query, store }) {
+  asyncData({
+    isDev,
+    route,
+    store,
+    env,
+    params,
+    query,
+    req,
+    res,
+    redirect,
+    error,
+  }) {},
+  async asyncData(context) {
     const page = Number.parseInt(query.page) || 1;
     const limit = 20;
     const tag = query.tag;

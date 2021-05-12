@@ -2,7 +2,6 @@ const Cookie = process.client ? require("js-cookie") : undefined;
 const cookieparser = process.server ? require("cookieparser") : undefined;
 // 需要永久存储，在state中的变量名
 let saveStateKeys = ["user"];
-
 // 获取本地存储中的变量
 const getStorage = function(key) {
   // 判断变量名是否在需要存储的数组中

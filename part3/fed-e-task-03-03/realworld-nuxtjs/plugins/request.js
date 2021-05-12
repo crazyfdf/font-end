@@ -15,7 +15,7 @@ export const api = (url, data = {}) => {
   let api = getApiObj(url);
   return request.request({
     url: api.url,
-    data,
+    params: data,
     method: api.method,
   });
 };
