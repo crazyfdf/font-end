@@ -13,11 +13,19 @@ export const request = axios.create({
 });
 export const api = (url, data = {}) => {
   let api = getApiObj(url);
-  return request.request({
-    url: api.url,
-    params: data,
-    method: api.method,
-  });
+  if (api.method == "GET") {
+    return request.request({
+      url: api.url,
+      params: data,
+      method: api.method,
+    });
+  } else {
+    return request.request({
+      url: api.url,
+      data,
+      method: api.method,
+    });
+  }
 };
 export default ({ store }) => {
   // 请求拦截器

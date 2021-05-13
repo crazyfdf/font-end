@@ -6,46 +6,38 @@
       {
         "path": "",
         "name": "home",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\home",
-        "_name": "_03a72dd5"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\home"
       },
       {
         "path": "/login",
         "name": "login",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\login",
-        "_name": "_7176d533"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\login"
       },
       {
         "path": "/register",
         "name": "register",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\login",
-        "_name": "_7176d533"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\login"
       },
       {
         "path": "/profile/:username",
         "name": "profile",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\profile",
-        "_name": "_6f85b61a"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\profile"
       },
       {
         "path": "/settings",
         "name": "settings",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\settings",
-        "_name": "_5eb0ebce"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\settings"
       },
       {
         "path": "/editor",
         "name": "editor",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\editor",
-        "_name": "_9e50163a"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\editor"
       },
       {
         "path": "/article/:slug",
         "name": "article",
-        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\article",
-        "_name": "_a1f12f80"
+        "component": "D:\\\\lagou\\\\part3\\\\fed-e-task-03-03\\\\realworld-nuxtjs\\\\pages\\\\article"
       }
-    ],
-    "_name": "_86b262c0"
+    ]
   }
 ]

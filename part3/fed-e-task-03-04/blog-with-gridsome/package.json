@@ -1,5 +1,5 @@
 {
-  "name": "my-gridsome-site",
+  "name": "blog-with-gridsome",
   "private": true,
   "scripts": {
     "develop": "gridsome develop",

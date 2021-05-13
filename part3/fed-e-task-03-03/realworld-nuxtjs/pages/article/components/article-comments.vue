@@ -15,7 +15,7 @@
         &nbsp;
         <nuxt-link :to="{name:'profile',params:{username:comment.author.username}}"
                    class="comment-author">{{comment.author.username}}</nuxt-link>
-        <span class="date-posted">{{commente.createdAt|data('MMM DD,YYYY')}}</span>
+        <span class="date-posted">{{comment.createdAt|date('MMM DD,YYYY')}}</span>
       </div>
     </div>
   </div>

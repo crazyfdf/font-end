@@ -29,20 +29,24 @@
 
         <div class="col-xs-12 col-md-8 offset-md-2">
 
-          <form class="card comment-form">
+          <form class="card comment-form"
+                @submit.prevent="onSubmit">
             <div class="card-block">
               <textarea class="form-control"
+                        v-model="comment.body"
                         placeholder="Write a comment..."
-                        rows="3"></textarea>
+                        rows="3"
+                        required></textarea>
             </div>
             <div class="card-footer">
-              <img src="http://i.imgur.com/Qr71crq.jpg"
+              <img :src="user.image"
                    class="comment-author-img" />
               <button class="btn btn-sm btn-primary">
                 Post Comment
               </button>
             </div>
           </form>
+          <error-component :error="error"></error-component>
           <article-comments :article="article"></article-comments>
 
         </div>
@@ -55,12 +59,13 @@
 </template>
 
 <script>
-import { getArticles } from "/request/api.js";
+import { getArticles, createComments } from "/request/api.js";
 import MarkdownIt from "markdown-it";
 import articleMeta from "./components/article-meta.vue";
 import ArticleComments from "./components/article-comments.vue";
+import ErrorComponent from "../../components/error-component.vue";
 export default {
-  components: { articleMeta, ArticleComments },
+  components: { articleMeta, ArticleComments, ErrorComponent },
   name: "article",
   async asyncData({ params }) {
     const { data } = await getArticles(params.slug);
@@ -69,6 +74,7 @@ export default {
     article.body = md.render(article.body);
     return {
       article,
+      slug: params.slug,
     };
   },
   head() {
@@ -82,6 +88,24 @@ export default {
         },
       ],
     };
+  },
+  data() {
+    return {
+      error: {},
+      comment: {
+        body: "",
+      },
+    };
+  },
+  methods: {
+    onSubmit() {
+      try {
+        createComments(this.slug, this.comment);
+      } catch (error) {
+        console.log(error);
+        this.error = error.response.data.errors;
+      }
+    },
   },
 };
 </script>

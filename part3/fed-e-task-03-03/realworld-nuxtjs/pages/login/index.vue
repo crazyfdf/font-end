@@ -13,15 +13,7 @@
                        to="/login">Have an account?</nuxt-link>
           </p>
 
-          <ul class="error-messages">
-            <template v-for="(messages,field) in error">
-              <li v-for="(message,index) in messages"
-                  :key="index">
-                {{field}} {{message}}
-              </li>
-
-            </template>
-          </ul>
+          <error-component :error="error"></error-component>
 
           <form @submit.prevent="onSubmit">
             <fieldset v-if="!isLogin"
@@ -59,7 +51,9 @@
 </template>
 
 <script>
+import ErrorComponent from "../../components/error-component.vue";
 export default {
+  components: { ErrorComponent },
   middleware: "notAuthenticated",
   name: "login",
   data() {
