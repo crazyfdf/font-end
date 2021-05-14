@@ -48,6 +48,10 @@
               </button>
             </fieldset>
           </form>
+          <button class="btn btn-outline-danger"
+                  @click="logout">
+            Or click here to logout.
+          </button>
         </div>
 
       </div>
@@ -73,6 +77,9 @@ export default {
       },
     };
   },
+  mounted() {
+    this.users = this.user;
+  },
   methods: {
     async onSubmit() {
       try {
@@ -85,6 +92,14 @@ export default {
       } catch (error) {
         console.log(error);
         this.error = error.response.data.errors;
+      }
+    },
+    logout() {
+      try {
+        this.$uct.vuex("user", null);
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
       }
     },
   },

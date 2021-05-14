@@ -39,7 +39,7 @@
                         required></textarea>
             </div>
             <div class="card-footer">
-              <img :src="user.image"
+              <img :src="user.image||altImage"
                    class="comment-author-img" />
               <button class="btn btn-sm btn-primary">
                 Post Comment
@@ -47,7 +47,8 @@
             </div>
           </form>
           <error-component :error="error"></error-component>
-          <article-comments :article="article"></article-comments>
+          <article-comments ref="comment"
+                            :article="article"></article-comments>
 
         </div>
 
@@ -101,6 +102,7 @@ export default {
     onSubmit() {
       try {
         createComments(this.slug, this.comment);
+        this.$refs.comment.init();
       } catch (error) {
         console.log(error);
         this.error = error.response.data.errors;

@@ -1,29 +1,33 @@
 <template>
   <div>
-    <div class="article-preview"
-         v-for="article in articles"
-         :key="article.slug">
-      <div class="article-meta">
-        <nuxt-link :to="{name:'profile',params:{username:article.author.username}}"><img :src="article.author.image" /></nuxt-link>
-        <div class="info">
-          <nuxt-link :to="{name:'profile',params:{username:article.author.username}}"
-                     class="author">{{article.author.username}}</nuxt-link>
-          <span class="date">{{article.createdAt|date('MMM DD,YYYY')}}</span>
+    <div v-if="articles.length">
+      <div class="article-preview"
+           v-for="article in articles"
+           :key="article.slug">
+        <div class="article-meta">
+          <nuxt-link :to="{name:'profile',params:{username:article.author.username}}"><img :src="article.author.image||altImage" /></nuxt-link>
+          <div class="info">
+            <nuxt-link :to="{name:'profile',params:{username:article.author.username}}"
+                       class="author">{{article.author.username}}</nuxt-link>
+            <span class="date">{{article.createdAt|date('MMM DD,YYYY')}}</span>
+          </div>
+          <button class="btn btn-outline-primary btn-sm pull-xs-right"
+                  :class="{'active':article.favorited}"
+                  :disabled="article.favoriteDisable"
+                  @click="onFavorite(article)">
+            <i class="ion-heart"></i> {{article.favoritesCount}}
+          </button>
         </div>
-        <button class="btn btn-outline-primary btn-sm pull-xs-right"
-                :class="{'active':article.favorited}"
-                :disabled="article.favoriteDisable"
-                @click="onFavorite(article)">
-          <i class="ion-heart"></i> {{article.favoritesCount}}
-        </button>
+        <nuxt-link :to="{name:'article',params:{slug:article.slug}}"
+                   class="preview-link">
+          <h1>{{article.title}}</h1>
+          <p>{{article.description}}</p>
+          <span>Read more...</span>
+        </nuxt-link>
       </div>
-      <nuxt-link :to="{name:'article',params:{slug:article.slug}}"
-                 class="preview-link">
-        <h1>{{article.title}}</h1>
-        <p>{{article.description}}</p>
-        <span>Read more...</span>
-      </nuxt-link>
     </div>
+    <div v-else>Loading...</div>
+
   </div>
 </template>
 

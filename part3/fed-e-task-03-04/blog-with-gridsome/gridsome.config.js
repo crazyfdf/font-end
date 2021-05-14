@@ -7,6 +7,14 @@
 module.exports = {
   siteName: "拉钩教育",
   siteDescription: "大前端",
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/source-filesystem",
+      options: {
+        typeName: "BlogPost",
+        path: "./content/blog/**/*.md",
+      },
+    },
+  ],
   templates: {},
 };

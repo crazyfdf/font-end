@@ -14,9 +14,7 @@ const saveStorage = function(key, value) {
   // 判断变量名是否在需要存储的数组中
   if (saveStateKeys.indexOf(key) != -1) {
     try {
-      if (!Cookie.get(key)) {
-        Cookie.set(key, value);
-      }
+      Cookie.set(key, value);
     } catch (error) {
       console.log(error);
     }
@@ -24,7 +22,7 @@ const saveStorage = function(key, value) {
 };
 
 const state = () => {
-  return { user: null };
+  return { user: null, altImage: "https://fakeimg.pl/350x350/?text=暂无" };
 };
 
 const mutations = {

@@ -2,7 +2,7 @@
   <div class="article-meta">
     <nuxt-link :to="{name:'profile',params:{
       username:article.author.username
-    }}"><img :src="article.author.image" /></nuxt-link>
+    }}"><img :src="article.author.image||altImage" /></nuxt-link>
     <div class="info">
       <nuxt-link class="author"
                  :to="{name:'profile',params:{
@@ -24,7 +24,7 @@
             :class="{active:article.author.favorited}">
       <i class="ion-heart"></i>
       &nbsp;
-      Favorite Post <span class="counter">({{article.favoritesCount}})</span>
+      {{article.favorited?'Unfavorite':'Favorite'}} <span class="counter">({{article.favoritesCount}})</span>
     </button>
   </div>
 </template>

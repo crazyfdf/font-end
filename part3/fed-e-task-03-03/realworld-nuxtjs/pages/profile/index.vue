@@ -6,7 +6,7 @@
         <div class="row">
 
           <div class="col-xs-12 col-md-10 offset-md-1">
-            <img :src="profile.image"
+            <img :src="profile.image||altImage"
                  class="user-img" />
             <h4>{{profile.username}}</h4>
             <p>

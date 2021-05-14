@@ -9,7 +9,7 @@
       <div class="card-footer">
         <nuxt-link :to="{name:'profile',params:{username:comment.author.username}}"
                    class="comment-author">
-          <img :src="comment.author.image"
+          <img :src="comment.author.image||altImage"
                class="comment-author-img" />
         </nuxt-link>
         &nbsp;
@@ -31,16 +31,20 @@ export default {
       required: true,
     },
   },
-  async mounted() {
-    const { data } = await getComments(this.article.slug);
-    this.comments = data.comments;
+  mounted() {
+    this.init();
   },
   data() {
     return {
       comments: [], //文章列表
     };
   },
-  methods: {},
+  methods: {
+    async init() {
+      const { data } = await getComments(this.article.slug);
+      this.comments = data.comments;
+    },
+  },
 };
 </script>
 

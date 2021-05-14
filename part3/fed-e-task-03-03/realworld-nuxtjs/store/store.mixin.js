@@ -1,7 +1,7 @@
 import { mapState } from "vuex";
 
 // 尝试将用户在根目录中的store/index.js的vuex的state变量，全部加载到全局变量中
-let $storeKey = ["user"];
+let $storeKey = ["user", "altImage"];
 
 export default {
   mounted() {

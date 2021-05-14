@@ -29,8 +29,7 @@
                     <nuxt-link class="nav-link"
                          :to="`/profile/${user.username}`">
                        <img class="user-pic"
-                     :src="user.image">
-                      {{user.username}}
+                     :src="user.image||altImage"> {{user.username}}
                       </nuxt-link>
             </li>
           </template>
