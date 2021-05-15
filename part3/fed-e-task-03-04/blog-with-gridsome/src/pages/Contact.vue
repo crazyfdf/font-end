@@ -30,6 +30,7 @@
               <div class="form-group floating-label-form-group controls">
                 <label>Name</label>
                 <input class="form-control"
+                       v-model="form.name"
                        id="name"
                        type="text"
                        placeholder="Name"
@@ -42,6 +43,7 @@
               <div class="form-group floating-label-form-group controls">
                 <label>Email Address</label>
                 <input class="form-control"
+                       v-model="form.email"
                        id="email"
                        type="email"
                        placeholder="Email Address"
@@ -54,6 +56,7 @@
               <div class="form-group col-xs-12 floating-label-form-group controls">
                 <label>Phone Number</label>
                 <input class="form-control"
+                       v-model="form.phone"
                        id="phone"
                        type="tel"
                        placeholder="Phone Number"
@@ -66,6 +69,7 @@
               <div class="form-group floating-label-form-group controls">
                 <label>Message</label>
                 <textarea class="form-control"
+                          v-model="form.message"
                           id="message"
                           rows="5"
                           placeholder="Message"
@@ -78,6 +82,7 @@
             <div id="success"></div>
             <button class="btn btn-primary"
                     id="sendMessageButton"
+                    @click.prevent="onSubmit"
                     type="submit">Send</button>
           </form>
         </div>
@@ -87,18 +92,33 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Contact",
-  components: {},
-  props: {},
   data() {
-    return {};
+    return {
+      form: {
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      },
+    };
   },
-  computed: {},
-  watch: {},
-  created() {},
-  mounted() {},
-  methods: {},
+  methods: {
+    async onSubmit() {
+      try {
+        const { data } = await axios({
+          method: "POST",
+          url: this.GRIDSOME_API_URL + "/contacts",
+          data: this.form,
+        });
+        window.alert("发送成功");
+      } catch (error) {
+        window.alert("发送失败，请稍后重试");
+      }
+    },
+  },
 };
 </script>
 

@@ -33,3 +33,9 @@
 \- 项目地址 https://gridsome-forestry.netlify.app/
 
 ![Cip5yF_qwu2AFO34AAChRmW4uJg361](images/Cip5yF_qwu2AFO34AAChRmW4uJg361.png)
+
+
+- 前台演示地址：https://blog-frontend-ruddy.vercel.app/
+- 后台演示地址：http://42.240.131.35:1337/admin/
+- 后台代码地址：https://gitee.com/huolingmengling/blog-backend
+- 前台代码地址：https://gitee.com/huolingmengling/font-end/tree/master/part3/fed-e-task-03-04/blog-with-gridsome
