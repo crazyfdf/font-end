@@ -7,10 +7,11 @@ import '../styles/appleBasket.scss';
 @observer
 class AppleBusket extends React.Component {
   /** 获取未吃苹果的组件数组*/
-  getAppleItem() {
+  getAppleItem () {
     let data = [];
     this.props.store.apples.forEach((apple) => {
-      if (!apple.isEaten) {
+      if (!apple.isEaten)
+      {
         data.push(
           <AppleItem
             apple={apple}
@@ -31,10 +32,8 @@ class AppleBusket extends React.Component {
     return data;
   }
 
-  render() {
-    console.log(this.props);
+  render () {
     let { status, isPicking, buttonText, pickApple } = this.props.store;
-    console.log(isPicking);
     let {
       appleNow: { quantity: notEatenQuantity, weight: notEatenWeight },
       appleEaten: { quantity: EatenQuantity, weight: EatenWeight },
