@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-07 19:45:52
- * @LastEditTime: 2021-06-16 09:56:31
- * @LastEditors: 祸灵
- * @Description: 链表
- * @FilePath: \UC-font\components\uct\libs\structure\linkList.js
- */
 class LinkedList {
   constructor(head = null) {
     this.head = head;
@@ -190,10 +182,24 @@ class LinkedList {
   }
 }
 
+class Queue {
+  constructor() {
+    this.linkedList = new LinkedList();
+  }
+  enQueue(data) {
+    this.linkedList.append(data);
+  }
+  deQueue() {
+    return this.linkedList.removeAt(0);
+  }
+}
+
 let list = new LinkedList();
 list.append("123");
 list.append("123");
 list.append("123");
+console.dir(list);
+
 // list.insert(0, "000");
 // list.insert(3, "333");
 // list.insert(5, "555");
@@ -202,5 +208,9 @@ list.append("123");
 // console.log(list.update(5, "111"));
 // console.log(list.remove("111"));
 // console.log(list.toString());
-// let list1 = new LinkedList({ data: "000", next: null });
-console.dir(list);
+let queue = new Queue();
+
+queue.enQueue("node1");
+queue.enQueue("node2");
+// let a = queue.deQueue();
+console.log(queue);
