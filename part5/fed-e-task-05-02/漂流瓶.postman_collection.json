@@ -12,13 +12,23 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"owner\":1,\r\n    \"type\":\"all\",\r\n    \"content\":\"xxx\"\r\n}"
+					"raw": "{\r\n    \"owner\":1,\r\n    \"type\":\"female\",\r\n    \"content\":\"xxx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "localhost",
+					"raw": "http://42.240.131.35:1234",
+					"protocol": "http",
 					"host": [
-						"localhost"
-					]
+						"42",
+						"240",
+						"131",
+						"35"
+					],
+					"port": "1234"
 				}
 			},
 			"response": []
@@ -28,7 +38,26 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://42.240.131.35:1234/?type=all",
+					"protocol": "http",
+					"host": [
+						"42",
+						"240",
+						"131",
+						"35"
+					],
+					"port": "1234",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "all"
+						}
+					]
+				}
 			},
 			"response": []
 		}

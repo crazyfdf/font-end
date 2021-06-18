@@ -25,7 +25,7 @@ app.post("/", async (req, res, next) => {
     body.time = body.time || Date.now();
     await redis.hmset(userId, body);
     await redis.expire(userId, 60 * 60 * 24);
-    res.status(200).json({
+    res.status(201).json({
       code: 1,
       msg: {
         id: userId,
@@ -79,6 +79,10 @@ app.use((err, req, res, next) => {
     code: 0,
     mes: err.message,
   });
+});
+
+app.use((req, res, next) => {
+  res.status(404).send("404 Not Found.");
 });
 
 app.listen(1234, () => {
