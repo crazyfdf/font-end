@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const { dbUri } = require("../config/config.default");
 // 连接MongDB数据库
-mongoose.connect(dbUri);
+mongoose.connect(dbUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true, //这个即是报的警告
+});
 
 const db = mongoose.connection;
 // 当连接失败时
@@ -15,5 +18,4 @@ db.once("open", function () {
 // 组织导出模型类
 module.exports = {
   User: mongoose.model("User", require("./user")),
-  Article: mongoose.model("Article", require("./article")),
 };

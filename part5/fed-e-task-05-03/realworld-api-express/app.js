@@ -13,7 +13,7 @@ app.use(express.urlencoded());
 
 app.use(cors());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9000;
 
 // 挂载路由
 app.use("/api", router);
